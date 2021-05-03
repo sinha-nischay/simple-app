@@ -1,16 +1,13 @@
 pipeline {
     agent any
 
+    triggers { pollSCM('H/2 * * * *') } // poll every 2 minutes
+    
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
     }
-
-   triggers { pollSCM('H/2 * * * *') } // poll every 2 minutes
-
-
-
-
+    
    environment {
        // use your actual issuer URL here and NOT the placeholder {yourOktaDomain}
        OKTA_OAUTH2_ISSUER           = 'https://dev-2946800.okta.com/oauth2/default'
